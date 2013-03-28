@@ -49,6 +49,9 @@ set hlsearch        " Enable search highlight
 set ignorecase      " Case insensitive search
 set smartcase       " If search contains uppercase enables case sensitive search
 
+" Automatically removing all trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 colorscheme Monokai
 
 " Enable filetype detection
