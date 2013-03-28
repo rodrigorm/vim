@@ -15,6 +15,9 @@ Bundle 'Lokaltog/powerline'
 " Show class and methods in file
 Bundle 'vim-scripts/taglist.vim'
 
+" Enable file navigate like Sublime (Ctrl+P) and Textmate (Cmd+T)
+Bundle 'kien/ctrlp.vim'
+
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
 
@@ -70,3 +73,6 @@ let g:powerline_config_overrides.common.dividers.left.soft=' '
 let g:powerline_config_overrides.common.dividers.right={}
 let g:powerline_config_overrides.common.dividers.right.hard=' '
 let g:powerline_config_overrides.common.dividers.right.soft=' '
+
+" Ignore some files for CtrlP
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
