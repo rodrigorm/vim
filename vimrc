@@ -21,6 +21,9 @@ Bundle 'kien/ctrlp.vim'
 " The best Git wrapper of all time
 Bundle 'tpope/vim-fugitive'
 
+" Gutter with diff changes
+Bundle 'airblade/vim-gitgutter'
+
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
 
