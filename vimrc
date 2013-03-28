@@ -9,11 +9,17 @@ call vundle#rc()
 
 " Install bundles here
 
+" Complete status line, includes git branch
+Bundle 'Lokaltog/powerline'
+
 " Show class and methods in file
 Bundle 'vim-scripts/taglist.vim'
 
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
+
+" Initialize bundles
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
@@ -52,3 +58,15 @@ let Tlist_File_Fold_Auto_Close=1    " Does not show tag from disabled buffers
 let Tlist_Sort_Type="name"          " Sort tags by name
 " Does not show variables for PHP buffers
 let tlist_php_settings='php;c:Classes;f:Functions'
+
+
+" Powerline configuration
+let g:powerline_config_overrides={}
+let g:powerline_config_overrides.common={}
+let g:powerline_config_overrides.common.dividers={}
+let g:powerline_config_overrides.common.dividers.left={}
+let g:powerline_config_overrides.common.dividers.left.hard=' '
+let g:powerline_config_overrides.common.dividers.left.soft=' '
+let g:powerline_config_overrides.common.dividers.right={}
+let g:powerline_config_overrides.common.dividers.right.hard=' '
+let g:powerline_config_overrides.common.dividers.right.soft=' '
