@@ -18,6 +18,9 @@ Bundle 'vim-scripts/taglist.vim'
 " Enable file navigate like Sublime (Ctrl+P) and Textmate (Cmd+T)
 Bundle 'kien/ctrlp.vim'
 
+" The best Git wrapper of all time
+Bundle 'tpope/vim-fugitive'
+
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
 
