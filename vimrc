@@ -9,6 +9,9 @@ call vundle#rc()
 
 " Install bundles here
 
+" Install monokai colorscheme
+Bundle 'sickill/vim-monokai'
+
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
@@ -30,6 +33,8 @@ set incsearch       " Enable incremental search
 set hlsearch        " Enable search highlight
 set ignorecase      " Case insensitive search
 set smartcase       " If search contains uppercase enables case sensitive search
+
+colorscheme Monokai
 
 " Enable filetype detection
 :filetype plugin on
