@@ -9,6 +9,9 @@ call vundle#rc()
 
 " Install bundles here
 
+" Show class and methods in file
+Bundle 'vim-scripts/taglist.vim'
+
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
 
@@ -39,3 +42,13 @@ colorscheme Monokai
 " Enable filetype detection
 :filetype plugin on
 :filetype plugin indent on
+
+
+" Taglist Settings
+nnoremap ,l :TlistToggle<CR>
+let Tlist_Use_Right_Window=1        " Show taglist at right
+let Tlist_GainFocus_On_ToggleOpen=1 " Focus taglist when open
+let Tlist_File_Fold_Auto_Close=1    " Does not show tag from disabled buffers
+let Tlist_Sort_Type="name"          " Sort tags by name
+" Does not show variables for PHP buffers
+let tlist_php_settings='php;c:Classes;f:Functions'
