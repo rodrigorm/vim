@@ -47,6 +47,8 @@ set expandtab       " Convert hard tab to spaces
 set ruler           " Show cursor position
 set cursorline      " Destaca a linha atual
 set laststatus=2    " Always show status bar
+set showcmd         " Show typed command at statusbar
+set hidden          " Remenber undo after quitting
 
 set autoread        " Automatic refresh changed files
 
