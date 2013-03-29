@@ -91,3 +91,6 @@ let g:powerline_config_overrides.common.dividers.right.soft=' '
 
 " Ignore some files for CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
+
+" Clear screen at exit
+au VimLeave * :!clear
