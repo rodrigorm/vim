@@ -94,3 +94,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
 
 " Clear screen at exit
 au VimLeave * :!clear
+
+" Keyboard bindings
+nnoremap ; : " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
