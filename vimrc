@@ -30,6 +30,9 @@ Bundle 'Townk/vim-autoclose'
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
 
+" Install editorconfig support
+Bundle 'editorconfig/editorconfig-vim'
+
 " Initialize bundles
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
