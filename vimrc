@@ -94,6 +94,8 @@ let g:powerline_config_overrides.common.dividers.right.soft=' '
 
 " Ignore some files for CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
+" Tells Ctrl_P to find files in current working directory
+let g:ctrlp_working_path_mode = ''
 
 " Clear screen at exit
 au VimLeave * :!clear
