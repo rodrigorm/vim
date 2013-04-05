@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+PEARPath="/usr/share/php"
+
+mkdir -p "${HOME}/.ctags"
+
+# PEAR
+# if [ -n "${PEARPath}" -a -d "{PEARPath}" ]; then
+    mkdir -p "${HOME}/.ctags/php/pear"
+    TAG_FILE="${HOME}/.ctags/php/pear/tags"
+
+    rm -f "${TAG_FILE}"
+
+    echo "Looking inside: ${PEARPath}"
+
+    ctags \
+        --recurse \
+        --tag-relative \
+        --exclude=.git \
+        --sort=yes \
+        --append \
+        --PHP-kinds=+cf \
+        --regex-PHP='/abstract class ([^ ]*)/\1/c/' \
+        --regex-PHP='/^interface ([^ ]*)/\1/c/' \
+        --regex-PHP='/(public |static |abstract |protected |private )+function +([^ (]*)/\2/f/' \
+        -f "${TAG_FILE}" \
+        "${PEARPath}"
+
+    echo
+    echo "----------------- generated ctags for: PEAR ----------------"
+    cat  "${TAG_FILE}" | wc
+    echo "------------------------------------------------------------"
+    echo
+# fi

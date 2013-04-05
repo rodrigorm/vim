@@ -12,3 +12,4 @@ Dependencies
 
 * Install *exuberant-ctags* for TagList bundle.
  * `apt-get install exuberant-ctags`
+* To use ctags with PEAR library you need to run a script at `bin` using: `./.vim/bin/ctags_pear`

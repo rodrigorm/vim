@@ -103,3 +103,8 @@ au VimLeave * :!clear
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
 nnoremap ; :
+
+augroup TagFileType
+    autocmd!
+    autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
+augroup END
