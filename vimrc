@@ -63,7 +63,7 @@ set smartcase       " If search contains uppercase enables case sensitive search
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
-colorscheme Monokai
+" colorscheme Monokai
 
 " Enable filetype detection
 :filetype plugin on
@@ -98,7 +98,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
 let g:ctrlp_working_path_mode = ''
 
 " Clear screen at exit
-au VimLeave * :!clear
+autocmd VimLeave * :!clear
 
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
