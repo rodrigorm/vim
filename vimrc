@@ -90,3 +90,6 @@ augroup TagFileType
     autocmd!
     autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
 augroup END
+
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
