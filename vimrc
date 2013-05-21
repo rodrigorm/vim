@@ -21,9 +21,6 @@ Bundle 'tpope/vim-fugitive'
 " Gutter with diff changes
 Bundle 'airblade/vim-gitgutter'
 
-" Autoclose quotes and (
-Bundle 'Townk/vim-autoclose'
-
 " Install monokai colorscheme
 Bundle 'sickill/vim-monokai'
 
@@ -53,6 +50,7 @@ set incsearch       " Enable incremental search
 set hlsearch        " Enable search highlight
 set ignorecase      " Case insensitive search
 set smartcase       " If search contains uppercase enables case sensitive search
+let mapleader=","   " Set <leader> to ,
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -65,7 +63,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 
 " Taglist Settings
-nnoremap ,l :TlistToggle<CR>
+nnoremap <leader>l :TlistToggle<CR>
 let Tlist_Use_Right_Window=1        " Show taglist at right
 let Tlist_GainFocus_On_ToggleOpen=1 " Focus taglist when open
 let Tlist_File_Fold_Auto_Close=1    " Does not show tag from disabled buffers
@@ -93,3 +91,13 @@ augroup END
 
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
+
+" Disabled arrow key navigation
+noremap <Up>    <Nop>
+noremap <Down>  <Nop>
+noremap <Left>  <Nop>
+noremap <Right> <Nop>
+inoremap <Up>    <Nop>
+inoremap <Down>  <Nop>
+inoremap <Left>  <Nop>
+inoremap <Right> <Nop>
