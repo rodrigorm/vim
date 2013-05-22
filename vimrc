@@ -27,6 +27,9 @@ Bundle 'sickill/vim-monokai'
 " Install editorconfig support
 Bundle 'editorconfig/editorconfig-vim'
 
+" Install trailing spaces higlight
+Bundle 'bronson/vim-trailing-whitespace'
+
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
@@ -55,12 +58,9 @@ let mapleader=","   " Set <leader> to ,
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
-" colorscheme Monokai
-
 " Enable filetype detection
 :filetype plugin on
 :filetype plugin indent on
-
 
 " Taglist Settings
 nnoremap <leader>l :TlistToggle<CR>
