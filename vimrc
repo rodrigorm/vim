@@ -21,8 +21,8 @@ Bundle 'tpope/vim-fugitive'
 " Gutter with diff changes
 Bundle 'airblade/vim-gitgutter'
 
-" Install monokai colorscheme
-Bundle 'sickill/vim-monokai'
+" Install jellybeans colorscheme
+Bundle 'nanotech/jellybeans.vim'
 
 " Install editorconfig support
 Bundle 'editorconfig/editorconfig-vim'
@@ -31,6 +31,7 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'bronson/vim-trailing-whitespace'
 
 syntax enable       " Enable syntax highlight
+colorscheme jellybeans " Pretty colors
 set encoding=utf-8
 set showmode        " Show current input mode
 set wildmenu        " Show vim menu with commands
