@@ -30,8 +30,9 @@ Bundle 'editorconfig/editorconfig-vim'
 " Install trailing spaces higlight
 Bundle 'bronson/vim-trailing-whitespace'
 
-syntax enable       " Enable syntax highlight
 colorscheme jellybeans " Pretty colors
+
+syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
 set wildmenu        " Show vim menu with commands
@@ -43,10 +44,11 @@ set shiftwidth=4    " 4 spaces for (auto)indent
 set softtabstop=4   " Use backspace for deindent
 set expandtab       " Convert hard tab to spaces
 set ruler           " Show cursor position
-set cursorline      " Destaca a linha atual
+set cursorline      " Highlight current line
 set laststatus=2    " Always show status bar
 set showcmd         " Show typed command at statusbar
-set hidden          " Remenber undo after quitting
+set hidden          " Remember undo after quitting
+set showtabline=2 " always show tabs in gvim, but not vim
 
 set autoread        " Automatic refresh changed files
 
@@ -54,7 +56,10 @@ set incsearch       " Enable incremental search
 set hlsearch        " Enable search highlight
 set ignorecase      " Case insensitive search
 set smartcase       " If search contains uppercase enables case sensitive search
+
 let mapleader=","   " Set <leader> to ,
+set scrolloff=5     " When scrolling off-screen do so 3 lines at a time, not 1
+set backspace=indent,eol,start " Make backspace work in insert mode
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -102,3 +107,10 @@ inoremap <Up>    <Nop>
 inoremap <Down>  <Nop>
 inoremap <Left>  <Nop>
 inoremap <Right> <Nop>
+
+" Tab navigation
+nmap <leader>tn :tabnext<CR>
+nmap <leader>tp :tabprevious<CR>
+nmap <leader>te :tabedit
+
+nnoremap <silent> <leader>nh :nohls <CR> " Hide search highlighting
