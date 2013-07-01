@@ -36,7 +36,6 @@ syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
 set wildmenu        " Show vim menu with commands
-set background=dark " Use dark background
 set nu              " Show line numbers
 set ai              " Enable auto tab/indent
 set tabstop=4       " Tab using 4 spaces
