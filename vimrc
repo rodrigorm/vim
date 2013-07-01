@@ -36,6 +36,9 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
+" Install vim-php-namespace
+Bundle 'arnaud-lb/vim-php-namespace'
+
 colorscheme jellybeans " Pretty colors
 
 syntax enable       " Enable syntax highlight
@@ -119,3 +122,12 @@ nmap <leader>tp :tabprevious<CR>
 nmap <leader>te :tabedit
 
 nnoremap <silent> <leader>nh :nohls <CR> " Hide search highlighting
+
+" Map keys to vim-php-namespace
+" <Leader>u Insert a use <CurrentClass> to header
+inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+noremap <Leader>u :call PhpInsertUse()<CR>
+
+" <Leader>e to expand current class do complete namespace
+inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
+noremap <Leader>e :call PhpExpandClass()<CR>
