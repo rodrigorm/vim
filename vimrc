@@ -117,9 +117,8 @@ inoremap <Left>  <Nop>
 inoremap <Right> <Nop>
 
 " Tab navigation
-nmap <leader>tn :tabnext<CR>
-nmap <leader>tp :tabprevious<CR>
-nmap <leader>te :tabedit
+nmap tn :tabnext<CR>
+nmap tp :tabprevious<CR>
 
 nnoremap <silent> <leader>nh :nohls <CR> " Hide search highlighting
 
