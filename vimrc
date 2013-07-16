@@ -100,6 +100,7 @@ nnoremap ; :
 
 augroup TagFileType
     autocmd!
+    autocmd FileType * execute 'setlocal tags+=.git/tags/' . &filetype
     autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
 augroup END
 
