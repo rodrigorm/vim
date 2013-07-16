@@ -103,8 +103,8 @@ augroup TagFileType
     autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
 augroup END
 
-set backupdir=~/.vim/backup/
-set directory=~/.vim/backup/
+set backupdir=/tmp/
+set directory=/tmp/
 
 " Disabled arrow key navigation
 noremap <Up>    <Nop>
@@ -130,3 +130,4 @@ noremap <Leader>u :call PhpInsertUse()<CR>
 " <Leader>e to expand current class do complete namespace
 inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 noremap <Leader>e :call PhpExpandClass()<CR>
+
