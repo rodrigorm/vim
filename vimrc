@@ -39,6 +39,12 @@ Bundle 'honza/vim-snippets'
 " Install vim-php-namespace
 Bundle 'arnaud-lb/vim-php-namespace'
 
+" Less syntax
+Bundle 'groenewege/vim-less'
+
+" Coffee scripts syntax
+Bundle 'kchmck/vim-coffee-script'
+
 colorscheme jellybeans " Pretty colors
 
 syntax enable       " Enable syntax highlight
