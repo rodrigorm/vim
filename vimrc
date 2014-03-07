@@ -45,6 +45,9 @@ Bundle 'groenewege/vim-less'
 " Coffee scripts syntax
 Bundle 'kchmck/vim-coffee-script'
 
+" Faster Ctrl-P Matcher
+Bundle 'FelikZ/ctrlp-py-matcher'
+
 colorscheme jellybeans " Pretty colors
 
 syntax enable       " Enable syntax highlight
@@ -96,6 +99,9 @@ let tlist_php_settings='php;c:Classes;f:Functions'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
 " Tells Ctrl_P to find files in current working directory
 let g:ctrlp_working_path_mode = ''
+
+" Enable Ctrl-P Py Matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Clear screen at exit
 autocmd VimLeave * :!clear
