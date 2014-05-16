@@ -36,9 +36,6 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
-" Install vim-php-namespace
-Bundle 'arnaud-lb/vim-php-namespace'
-
 " Less syntax
 Bundle 'groenewege/vim-less'
 
@@ -95,6 +92,12 @@ let Tlist_Close_On_Select=1         " Close taglist when select
 " Does not show variables for PHP buffers
 let tlist_php_settings='php;c:Classes;f:Functions'
 
+augroup TagFileType
+    autocmd!
+    autocmd FileType * execute 'setlocal tags+=.git/tags/' . &filetype
+    autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
+augroup END
+
 " Ignore some files for CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
 " Tells Ctrl_P to find files in current working directory
@@ -110,12 +113,6 @@ autocmd VimLeave * :!clear
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
 nnoremap ; :
 
-augroup TagFileType
-    autocmd!
-    autocmd FileType * execute 'setlocal tags+=.git/tags/' . &filetype
-    autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
-augroup END
-
 set backupdir=/tmp/
 set directory=/tmp/
 
@@ -130,19 +127,13 @@ inoremap <Left>  <Nop>
 inoremap <Right> <Nop>
 
 " Tab navigation
+nmap te :tabnew<CR>:edit<Space>
+nmap to :tabnew<CR>
 nmap tn :tabnext<CR>
 nmap tp :tabprevious<CR>
 
-nnoremap <silent> <leader>nh :nohls <CR> " Hide search highlighting
-
-" Map keys to vim-php-namespace
-" <Leader>u Insert a use <CurrentClass> to header
-inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
-noremap <Leader>u :call PhpInsertUse()<CR>
-
-" <Leader>e to expand current class do complete namespace
-inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
-noremap <Leader>e :call PhpExpandClass()<CR>
+" Hide search highlighting
+nnoremap <silent> <leader>nh :nohls <CR>
 
 " The Silver Searcher
 if executable('ag')
