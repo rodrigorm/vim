@@ -45,6 +45,9 @@ Bundle 'kchmck/vim-coffee-script'
 " Faster Ctrl-P Matcher
 Bundle 'FelikZ/ctrlp-py-matcher'
 
+" PHP Omni Complete
+Bundle 'shawncplus/phpcomplete.vim'
+
 colorscheme jellybeans " Pretty colors
 
 syntax enable       " Enable syntax highlight
@@ -147,3 +150,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " File explorer
 map <silent> <F8> :Explore<CR>
 map <silent> <S-F8> :split +Explore<CR>
+
+" Omni Complete using Ctrl-Space
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-x><C-o>
