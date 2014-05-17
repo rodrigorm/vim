@@ -144,3 +144,6 @@ endif
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+" File explorer
+map <silent> <F8> :Explore<CR>
+map <silent> <S-F8> :split +Explore<CR>
