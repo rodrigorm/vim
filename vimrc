@@ -148,8 +148,8 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " File explorer
-map <silent> <F8> :Explore<CR>
-map <silent> <S-F8> :split +Explore<CR>
+map <silent> <leader>t :Explore<CR>
+map <silent> <leader>T :split +Explore<CR>
 
 " Omni Complete using Ctrl-Space
 inoremap <C-Space> <C-x><C-o>
