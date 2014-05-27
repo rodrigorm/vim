@@ -21,9 +21,6 @@ Bundle 'tpope/vim-fugitive'
 " Gutter with diff changes
 Bundle 'airblade/vim-gitgutter'
 
-" Install jellybeans colorscheme
-Bundle 'nanotech/jellybeans.vim'
-
 " Install editorconfig support
 Bundle 'editorconfig/editorconfig-vim'
 
@@ -47,8 +44,6 @@ Bundle 'FelikZ/ctrlp-py-matcher'
 
 " PHP Omni Complete
 Bundle 'shawncplus/phpcomplete.vim'
-
-colorscheme jellybeans " Pretty colors
 
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
