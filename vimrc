@@ -131,7 +131,7 @@ nmap tn :tabnext<CR>
 nmap tp :tabprevious<CR>
 
 " Hide search highlighting
-nnoremap <silent> <leader>nh :nohls <CR>
+nnoremap <silent> <leader>/ :nohlsearch <CR>
 
 " The Silver Searcher
 if executable('ag')
