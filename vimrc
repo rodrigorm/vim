@@ -130,8 +130,16 @@ nmap to :tabnew<CR>
 nmap tn :tabnext<CR>
 nmap tp :tabprevious<CR>
 
+" Location list navigation
+nmap ln :lnext<CR>
+nmap lp :lprevious<CR>
+
+" Quick list navigation
+nmap cn :cnext<CR>
+nmap cp :cprevious<CR>
+
 " Hide search highlighting
-nnoremap <silent> <leader>/ :nohlsearch <CR>
+nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 " The Silver Searcher
 if executable('ag')
