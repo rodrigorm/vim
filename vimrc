@@ -131,8 +131,8 @@ nmap tn :tabnext<CR>
 nmap tp :tabprevious<CR>
 
 " Location list navigation
-nmap ln :lnext<CR>
-nmap lp :lprevious<CR>
+nmap <leader>ln :lnext<CR>
+nmap <leader>lp :lprevious<CR>
 
 " Quick list navigation
 nmap cn :cnext<CR>
