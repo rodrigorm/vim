@@ -18,20 +18,11 @@ Bundle 'kien/ctrlp.vim'
 " The best Git wrapper of all time
 Bundle 'tpope/vim-fugitive'
 
-" Gutter with diff changes
-Bundle 'airblade/vim-gitgutter'
-
 " Install editorconfig support
 Bundle 'editorconfig/editorconfig-vim'
 
 " Install trailing spaces higlight
 Bundle 'bronson/vim-trailing-whitespace'
-
-" Install snipmate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
 
 " Less syntax
 Bundle 'groenewege/vim-less'
@@ -42,14 +33,10 @@ Bundle 'kchmck/vim-coffee-script'
 " Faster Ctrl-P Matcher
 Bundle 'FelikZ/ctrlp-py-matcher'
 
-" PHP Omni Complete
-Bundle 'shawncplus/phpcomplete.vim'
-
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
 set wildmenu        " Show vim menu with commands
-set nu              " Show line numbers
 set ai              " Enable auto tab/indent
 set tabstop=4       " Tab using 4 spaces
 set shiftwidth=4    " 4 spaces for (auto)indent
@@ -60,7 +47,6 @@ set cursorline      " Highlight current line
 set laststatus=2    " Always show status bar
 set showcmd         " Show typed command at statusbar
 set hidden          " Remember undo after quitting
-set showtabline=2 " always show tabs in gvim, but not vim
 
 set autoread        " Automatic refresh changed files
 
@@ -70,7 +56,7 @@ set ignorecase      " Case insensitive search
 set smartcase       " If search contains uppercase enables case sensitive search
 
 let mapleader=","   " Set <leader> to ,
-set scrolloff=5     " When scrolling off-screen do so 3 lines at a time, not 1
+set scrolloff=5     " When scrolling off-screen do so 5 lines at a time, not 1
 set backspace=indent,eol,start " Make backspace work in insert mode
 
 " Automatically removing all trailing whitespace
