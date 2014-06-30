@@ -13,3 +13,29 @@ Execute (Use phpqa tools from composer):
   AssertEqual ComposerRoot() . "/vendor/bin/phpcs", g:phpqa_codesniffer_cmd
   AssertEqual ComposerRoot() . "/vendor/bin/phpmd", g:phpqa_messdetector_cmd
   AssertEqual ComposerRoot() . "/vendor/bin/phpunit", g:phpunit_cmd
+
+Execute (Should find test file):
+  AssertEqual "tests/FooTest.php", PhpTestForFile("src/Foo.php")
+  AssertEqual "tests/FooTest.php", PhpTestForFile("tests/FooTest.php")
+  AssertEqual "tests/unit/FooTest.php", PhpTestForFile("tests/unit/FooTest.php")
+
+Before:
+  lcd test/fixtures
+
+After:
+  lcd ../..
+
+Do (Run current file tests):
+  :edit src/Foo.php\<Enter>
+
+Execute (Should run tests for current file):
+  let g:test_executed = ""
+  command! -nargs=* Test let g:test_executed = PhpTestForFile(expand('%'))
+  call PhpTest()
+  AssertEqual "tests/FooTest.php", g:test_executed
+
+Execute (Should run tests on save):
+  let g:test_executed = ""
+  command! -nargs=* Test let g:test_executed = PhpTestForFile(expand('%'))
+  doautocmd BufWritePost
+  AssertEqual "tests/FooTest.php", g:test_executed

@@ -161,7 +161,7 @@ let g:phpqa_codecoverage_autorun=1
 let g:phpqa_codecoverage_file="build/logs/clover.xml"
 let g:phpqa_codecoverage_showcovered=1
 
-function ComposerRoot()
+function! ComposerRoot()
     let path = expand('%:p')
     while path != fnamemodify(path, ':h')
         let path = fnamemodify(path, ':h')
@@ -172,7 +172,7 @@ function ComposerRoot()
     return getcwd()
 endfunction
 
-function ComposerBin(name)
+function! ComposerBin(name)
     if filereadable(ComposerRoot() . "/vendor/bin/" . a:name)
         return ComposerRoot() . "/vendor/bin/" . a:name
     endif
@@ -185,4 +185,42 @@ augroup PHPQA
     autocmd FileType php let g:phpqa_codesniffer_cmd=ComposerBin("phpcs")
     autocmd FileType php let g:phpqa_messdetector_cmd=ComposerBin("phpmd")
     autocmd FileType php let g:phpunit_cmd=ComposerBin("phpunit")
+    autocmd BufWritePost *.php call PhpTest()
 augroup END
+
+function! PhpTest()
+    let l:test = PhpTestForFile(expand('%'))
+
+    if filereadable(l:test)
+        :Test
+    endif
+endfunction
+
+" Let PHPUnitQf use the callback function
+let g:phpunit_callback = "PHPTestCallback"
+
+" Try to find the test file of current open file
+function! PHPTestCallback(args)
+    " Trim white space
+    let l:args = substitute(a:args, '^\s*\(.\{-}\)\s*$', '\1', '')
+
+    " If no arguments are passed to :Test
+    if len(l:args) is 0
+        let l:args = PhpTestForFile(expand('%'))
+    endif
+
+    return l:args
+endfunction
+
+function! PhpTestForFile(path)
+    " Trim white space
+    let l:file = substitute(a:path, '^\s*\(.\{-}\)\s*$', '\1', '')
+    let l:test = ""
+
+    " If no arguments are passed to :Test
+    if l:file =~ "^src/.*"
+        return substitute(l:file,'^src/\(.\{-}\)\.php$', 'tests/\1Test.php', '')
+    endif
+
+    return l:file
+endfunction
