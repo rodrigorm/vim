@@ -33,6 +33,13 @@ Bundle 'kchmck/vim-coffee-script'
 " Faster Ctrl-P Matcher
 Bundle 'FelikZ/ctrlp-py-matcher'
 
+" PHPQA Toolchain Integration
+Bundle 'joonty/vim-phpqa.git'
+Bundle 'joonty/vim-phpunitqf.git'
+
+" Vimscript test framework
+Bundle 'junegunn/vader.vim'
+
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
@@ -91,7 +98,7 @@ let g:ctrlp_working_path_mode = ''
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Clear screen at exit
-autocmd VimLeave * :!clear
+" autocmd VimLeave * :!clear
 
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
@@ -143,3 +150,39 @@ map <silent> <leader>T :split +Explore<CR>
 " Omni Complete using Ctrl-Space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
+
+" Configure PHPQA using defaults from
+" http://jenkins-php.org/
+let g:phpqa_messdetector_ruleset="build/phpmd.xml"
+let g:phpqa_codesniffer_args="--standard=build/phpcs.xml"
+let g:phpqa_messdetector_autorun=1
+let g:phpqa_codesniffer_autorun=1
+let g:phpqa_codecoverage_autorun=0
+let g:phpqa_codecoverage_file="build/logs/clover.xml"
+let g:phpqa_codecoverage_showcovered=1
+
+function ComposerRoot()
+    let path = expand('%:p')
+    while path != fnamemodify(path, ':h')
+        let path = fnamemodify(path, ':h')
+        if filereadable(path . "/composer.json")
+            return path
+        endif
+    endwhile
+    return getcwd()
+endfunction
+
+function ComposerBin(name)
+    if filereadable(ComposerRoot() . "/vendor/bin/" . a:name)
+        return ComposerRoot() . "/vendor/bin/" . a:name
+    endif
+    return a:name
+endfunction
+
+" Use from composer if exists
+augroup PHPQA
+    autocmd!
+    autocmd FileType php let g:phpqa_codesniffer_cmd=ComposerBin("phpcs")
+    autocmd FileType php let g:phpqa_messdetector_cmd=ComposerBin("phpmd")
+    autocmd FileType php let g:phpunit_cmd=ComposerBin("phpunit")
+augroup END

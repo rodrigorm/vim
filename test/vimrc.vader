@@ -1,0 +1,15 @@
+Do (open php file):
+  :edit test/fixtures/index.php\<Enter>
+
+Execute (Use phpqa tools from PATH):
+  AssertEqual "phpcs", g:phpqa_codesniffer_cmd
+  AssertEqual "phpmd", g:phpqa_messdetector_cmd
+  AssertEqual "phpunit", g:phpunit_cmd
+
+Do (Open php file):
+  :edit test/fixtures/composer/index.php\<Enter>
+
+Execute (Use phpqa tools from composer):
+  AssertEqual ComposerRoot() . "/vendor/bin/phpcs", g:phpqa_codesniffer_cmd
+  AssertEqual ComposerRoot() . "/vendor/bin/phpmd", g:phpqa_messdetector_cmd
+  AssertEqual ComposerRoot() . "/vendor/bin/phpunit", g:phpunit_cmd
