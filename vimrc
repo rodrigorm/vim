@@ -34,7 +34,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'FelikZ/ctrlp-py-matcher'
 
 " PHPQA Toolchain Integration
-Bundle 'joonty/vim-phpqa.git'
+Bundle 'rodrigorm/vim-phpqa.git'
 Bundle 'joonty/vim-phpunitqf.git'
 
 " Vimscript test framework
@@ -157,7 +157,7 @@ let g:phpqa_messdetector_ruleset="build/phpmd.xml"
 let g:phpqa_codesniffer_args="--standard=build/phpcs.xml"
 let g:phpqa_messdetector_autorun=1
 let g:phpqa_codesniffer_autorun=1
-let g:phpqa_codecoverage_autorun=0
+let g:phpqa_codecoverage_autorun=1
 let g:phpqa_codecoverage_file="build/logs/clover.xml"
 let g:phpqa_codecoverage_showcovered=1
 
