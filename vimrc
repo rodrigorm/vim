@@ -173,8 +173,9 @@ function! ComposerRoot()
 endfunction
 
 function! ComposerBin(name)
-    if filereadable(ComposerRoot() . "/vendor/bin/" . a:name)
-        return ComposerRoot() . "/vendor/bin/" . a:name
+    let l:path = ComposerRoot() . "/vendor/bin/" . a:name
+    if filereadable(l:path)
+        return l:path
     endif
     return a:name
 endfunction
@@ -192,24 +193,8 @@ function! PhpTest()
     let l:test = PhpTestForFile(expand('%'))
 
     if filereadable(l:test)
-        :Test
+        :execute ":Test " . l:test
     endif
-endfunction
-
-" Let PHPUnitQf use the callback function
-let g:phpunit_callback = "PHPTestCallback"
-
-" Try to find the test file of current open file
-function! PHPTestCallback(args)
-    " Trim white space
-    let l:args = substitute(a:args, '^\s*\(.\{-}\)\s*$', '\1', '')
-
-    " If no arguments are passed to :Test
-    if len(l:args) is 0
-        let l:args = PhpTestForFile(expand('%'))
-    endif
-
-    return l:args
 endfunction
 
 function! PhpTestForFile(path)
