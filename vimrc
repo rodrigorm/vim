@@ -207,5 +207,9 @@ function! PhpTestForFile(path)
         return substitute(l:file,'^src/\(.\{-}\)\.php$', 'tests/\1Test.php', '')
     endif
 
-    return l:file
+    if l:file =~ "^tests/.*Test\.php"
+        return l:file
+    endif
+
+    return ""
 endfunction
