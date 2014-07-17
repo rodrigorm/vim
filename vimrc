@@ -158,6 +158,7 @@ let g:phpqa_codesniffer_autorun=1
 let g:phpqa_codecoverage_autorun=1
 let g:phpqa_codecoverage_file="build/logs/clover.xml"
 let g:phpqa_codecoverage_showcovered=1
+let g:phpqa_open_loc=0
 
 function! ComposerRoot()
     let path = expand('%:p')
