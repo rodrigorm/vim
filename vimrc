@@ -115,6 +115,15 @@ inoremap <Down>  <Nop>
 inoremap <Left>  <Nop>
 inoremap <Right> <Nop>
 
+" Go down/up by screen line
+nnoremap j gj
+nnoremap k gk
+
+" Use jj to go back to normal mode,
+" disabled ESC to force learning
+inoremap jj <ESC>
+
+
 " Tab navigation
 nmap te :tabnew<CR>:edit<Space>
 nmap to :tabnew<CR>
@@ -126,8 +135,8 @@ nmap <leader>ln :lnext<CR>
 nmap <leader>lp :lprevious<CR>
 
 " Quick list navigation
-nmap cn :cnext<CR>
-nmap cp :cprevious<CR>
+nmap <leader>cn :cnext<CR>
+nmap <leader>cp :cprevious<CR>
 
 " Hide search highlighting
 nnoremap <silent> <leader>/ :nohlsearch<CR>
