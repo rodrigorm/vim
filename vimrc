@@ -57,6 +57,7 @@ set laststatus=2    " Always show status bar
 set showcmd         " Show typed command at statusbar
 set hidden          " Remember undo after quitting
 set nobackup        " Disabled backup
+set noswapfile      " Disable swp file
 
 set autoread        " Automatic refresh changed files
 
