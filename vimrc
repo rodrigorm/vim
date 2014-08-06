@@ -40,6 +40,10 @@ Bundle 'joonty/vim-phpunitqf.git'
 " Vimscript test framework
 Bundle 'junegunn/vader.vim'
 
+" Ultisnips
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
 set showmode        " Show current input mode
@@ -221,3 +225,8 @@ function! PhpTestForFile(path)
 
     return ""
 endfunction
+
+" UltiSnips settings
+let g:UltiSnipsExpandTrigger="<tab>"         " Expand using <Tab>
+let g:UltiSnipsJumpForwardTrigger="<tab>"    " Next placeholder using <Tab>
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>" " Previous placeholder using <Shift-Tab>
