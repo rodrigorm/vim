@@ -56,6 +56,7 @@ set cursorline      " Highlight current line
 set laststatus=2    " Always show status bar
 set showcmd         " Show typed command at statusbar
 set hidden          " Remember undo after quitting
+set nobackup        " Disabled backup
 
 set autoread        " Automatic refresh changed files
 
@@ -99,15 +100,9 @@ let g:ctrlp_working_path_mode = ''
 " Enable Ctrl-P Py Matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
-" Clear screen at exit
-" autocmd VimLeave * :!clear
-
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
 nnoremap ; :
-
-set backupdir=/tmp/
-set directory=/tmp/
 
 " Disabled arrow key navigation
 noremap <Up>    <Nop>
@@ -126,7 +121,7 @@ nnoremap k gk
 " Use jj to go back to normal mode,
 " disabled ESC to force learning
 inoremap jj <ESC>
-
+inoremap <ESC> <Nop>
 
 " Tab navigation
 nmap <Leader>te :tabnew<CR>:edit<Space>
