@@ -89,7 +89,6 @@ let tlist_php_settings='php;c:Classes;f:Functions'
 
 augroup TagFileType
     autocmd!
-    autocmd FileType * execute 'setlocal tags+=.git/tags/' . &filetype
     autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
 augroup END
 
