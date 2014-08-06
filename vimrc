@@ -129,10 +129,10 @@ inoremap jj <ESC>
 
 
 " Tab navigation
-nmap te :tabnew<CR>:edit<Space>
-nmap to :tabnew<CR>
-nmap tn :tabnext<CR>
-nmap tp :tabprevious<CR>
+nmap <Leader>te :tabnew<CR>:edit<Space>
+nmap <Leader>to :tabnew<CR>
+nmap <Tab> gt
+nmap <S-Tab> gT
 
 " Location list navigation
 nmap <leader>ln :lnext<CR>
@@ -161,6 +161,10 @@ map <silent> <leader>T :split +Explore<CR>
 " Omni Complete using Ctrl-Space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
+
+" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
 
 " Configure PHPQA using defaults from
 " http://jenkins-php.org/
