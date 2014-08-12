@@ -74,8 +74,8 @@ set backspace=indent,eol,start " Make backspace work in insert mode
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Enable filetype detection
-:filetype plugin on
-:filetype plugin indent on
+filetype plugin on
+filetype plugin indent on
 
 " Taglist Settings
 nnoremap <leader>l :TlistToggle<CR>
@@ -197,7 +197,6 @@ augroup PHPQA
     autocmd FileType php let g:phpqa_codesniffer_cmd=ComposerBin("phpcs")
     autocmd FileType php let g:phpqa_messdetector_cmd=ComposerBin("phpmd")
     autocmd FileType php let g:phpunit_cmd=ComposerBin("phpunit")
-    autocmd BufWritePost *.php call PhpTest()
 augroup END
 
 function! PhpTest()

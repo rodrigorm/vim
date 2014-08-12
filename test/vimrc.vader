@@ -33,9 +33,3 @@ Execute (Should run tests for current file):
   command! -nargs=* Test let g:test_executed = PhpTestForFile(expand('%'))
   call PhpTest()
   AssertEqual "tests/FooTest.php", g:test_executed
-
-Execute (Should run tests on save):
-  let g:test_executed = ""
-  command! -nargs=* Test let g:test_executed = PhpTestForFile(expand('%'))
-  doautocmd BufWritePost
-  AssertEqual "tests/FooTest.php", g:test_executed
