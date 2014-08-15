@@ -5,53 +5,55 @@ filetype off
 
 " Enable vundle bundle manager
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " Install bundles here
 
 " Show class and methods in file
-Bundle 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/taglist.vim'
 
 " Enable file navigate like Sublime (Ctrl+P) and Textmate (Cmd+T)
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " The best Git wrapper of all time
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " Install editorconfig support
-Bundle 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 " Install trailing spaces higlight
-Bundle 'bronson/vim-trailing-whitespace'
+Plugin 'bronson/vim-trailing-whitespace'
 
 " Less syntax
-Bundle 'groenewege/vim-less'
+Plugin 'groenewege/vim-less'
 
 " Coffee scripts syntax
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 
 " Faster Ctrl-P Matcher
-Bundle 'FelikZ/ctrlp-py-matcher'
+Plugin 'FelikZ/ctrlp-py-matcher'
 
 " PHPQA Toolchain Integration
-Bundle 'rodrigorm/vim-phpqa'
-Bundle 'joonty/vim-phpunitqf'
-Bundle 'rodrigorm/vim-phpunit'
-Bundle 'veloce/vim-behat'
+Plugin 'rodrigorm/vim-phpqa'
+Plugin 'joonty/vim-phpunitqf'
+Plugin 'rodrigorm/vim-phpunit'
+Plugin 'veloce/vim-behat'
 
 " Vimscript test framework
-Bundle 'junegunn/vader.vim'
+Plugin 'junegunn/vader.vim'
 
 " Ultisnips
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " Projectionist
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-projectionist'
+Plugin 'rodrigorm/vim-dispatch'
+Plugin 'tpope/vim-projectionist'
 
 " CakePHP
-Bundle 'violetyk/cake.vim'
+Plugin 'violetyk/cake.vim'
+
+call vundle#end()
 
 syntax enable       " Enable syntax highlight
 set encoding=utf-8
