@@ -42,10 +42,6 @@ Plugin 'veloce/vim-behat'
 " Vimscript test framework
 Plugin 'junegunn/vader.vim'
 
-" Ultisnips
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
 " Projectionist
 Plugin 'rodrigorm/vim-dispatch'
 Plugin 'tpope/vim-projectionist'
@@ -236,8 +232,3 @@ function! PhpTestForFile(path)
 
     return ''
 endfunction
-
-" UltiSnips settings
-let g:UltiSnipsExpandTrigger='<tab>'         " Expand using <Tab>
-let g:UltiSnipsJumpForwardTrigger='<tab>'    " Next placeholder using <Tab>
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>' " Previous placeholder using <Shift-Tab>
