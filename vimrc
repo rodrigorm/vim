@@ -52,6 +52,9 @@ Plugin 'violetyk/cake.vim'
 " PHPComplete
 Plugin 'shawncplus/phpcomplete.vim'
 
+" Taggatron
+Plugin 'joonty/vim-taggatron'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -101,6 +104,13 @@ augroup TagFileType
     autocmd!
     autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
 augroup END
+
+let g:tagcommands = {
+\   "php": {
+\       "tagfile": ".git/php.tags",
+\       "args": "-R"
+\   }
+\}
 
 " Ignore some files for CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
