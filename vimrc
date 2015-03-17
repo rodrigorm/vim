@@ -34,9 +34,9 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'FelikZ/ctrlp-py-matcher'
 
 " PHPQA Toolchain Integration
-Plugin 'rodrigorm/vim-phpqa'
+Plugin 'joonty/vim-phpqa'
 Plugin 'joonty/vim-phpunitqf'
-Plugin 'rodrigorm/vim-phpunit'
+Plugin 'afternoon/vim-phpunit'
 Plugin 'veloce/vim-behat'
 
 " Vimscript test framework
@@ -59,9 +59,9 @@ set ai              " Enable auto tab/indent
 set tabstop=4       " Hard tab using 4 spaces
 set shiftwidth=4    " 4 spaces for (auto)indent
 set ruler           " Show cursor position
-set cursorline      " Highlight current line
+set nocursorline    " Disable highlight current line
 set laststatus=2    " Always show status bar
-set showcmd         " Show typed command at statusbar
+set noshowcmd       " Hide typed command at statusbar
 set hidden          " Remember undo after quitting
 set nobackup        " Disabled backup
 set noswapfile      " Disable swp file
