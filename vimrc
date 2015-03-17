@@ -49,6 +49,9 @@ Plugin 'tpope/vim-projectionist'
 " CakePHP
 Plugin 'violetyk/cake.vim'
 
+" PHPComplete
+Plugin 'shawncplus/phpcomplete.vim'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
