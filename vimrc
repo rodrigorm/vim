@@ -52,9 +52,6 @@ Plugin 'violetyk/cake.vim'
 " PHPComplete
 Plugin 'shawncplus/phpcomplete.vim'
 
-" Supertab
-Plugin 'ervandew/supertab'
-
 " Taggatron
 Plugin 'joonty/vim-taggatron'
 
@@ -179,7 +176,6 @@ map <silent> <leader>T :split +Explore<CR>
 " Omni Complete using Ctrl-Space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 " Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
