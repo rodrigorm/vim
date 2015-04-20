@@ -34,7 +34,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'FelikZ/ctrlp-py-matcher'
 
 " PHPQA Toolchain Integration
-Plugin 'joonty/vim-phpqa'
+Plugin 'rodrigorm/vim-phpqa'
 Plugin 'joonty/vim-phpunitqf'
 Plugin 'afternoon/vim-phpunit'
 Plugin 'veloce/vim-behat'
@@ -53,7 +53,7 @@ Plugin 'violetyk/cake.vim'
 Plugin 'shawncplus/phpcomplete.vim'
 
 " Taggatron
-Plugin 'joonty/vim-taggatron'
+Plugin 'rodrigorm/vim-taggatron'
 
 call vundle#end()
 
@@ -108,7 +108,8 @@ augroup END
 let g:tagcommands = {
 \   "php": {
 \       "tagfile": ".git/php.tags",
-\       "args": "-R"
+\       "args": "-R",
+\       "cmd": "ctags"
 \   }
 \}
 
