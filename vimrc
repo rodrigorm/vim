@@ -214,12 +214,17 @@ function! ComposerBin(name)
     return a:name
 endfunction
 
+function! ComposerBinSetup()
+    let g:phpqa_codesniffer_cmd=ComposerBin('phpcs')
+    let g:phpqa_messdetector_cmd=ComposerBin('phpmd')
+    let g:phpunit_cmd=ComposerBin('phpunit')
+    let &l:makeprg=ComposerBin('phpunit') . ' $*'
+endfunction
+
 " Use from composer if exists
 augroup PHPQA
     autocmd!
-    autocmd FileType php let g:phpqa_codesniffer_cmd=ComposerBin('phpcs')
-    autocmd FileType php let g:phpqa_messdetector_cmd=ComposerBin('phpmd')
-    autocmd FileType php let g:phpunit_cmd=ComposerBin('phpunit')
+    autocmd FileType php call ComposerBinSetup()
 augroup END
 
 function! PhpTest()
