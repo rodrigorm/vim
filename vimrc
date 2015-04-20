@@ -151,8 +151,8 @@ nmap <Tab> gt
 nmap <S-Tab> gT
 
 " Location list navigation
-nmap <leader>ln :lnext<CR>
-nmap <leader>lp :lprevious<CR>
+nmap <leader>on :lnext<CR>
+nmap <leader>op :lprevious<CR>
 
 " Quick list navigation
 nmap <leader>cn :cnext<CR>
