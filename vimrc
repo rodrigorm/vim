@@ -55,6 +55,9 @@ Plugin 'shawncplus/phpcomplete.vim'
 " Taggatron
 Plugin 'rodrigorm/vim-taggatron'
 
+"DBGP Debugger client
+Plugin 'joonty/vdebug'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -138,6 +141,8 @@ inoremap <Right> <Nop>
 " Go down/up by screen line
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " Use jj to go back to normal mode,
 " disabled ESC to force learning
