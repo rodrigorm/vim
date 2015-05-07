@@ -111,8 +111,7 @@ augroup END
 let g:tagcommands = {
 \   "php": {
 \       "tagfile": ".git/php.tags",
-\       "args": "-R",
-\       "cmd": "ctags"
+\       "args": "--recurse --exclude=@.ctagsignore"
 \   }
 \}
 
