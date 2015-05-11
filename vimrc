@@ -210,17 +210,24 @@ function! ComposerRoot()
     return getcwd()
 endfunction
 
-function! ComposerBin(name)
-    let l:path = ComposerRoot() . '/vendor/bin/' . a:name
-    if filereadable(l:path)
-        return l:path
-    endif
-    return a:name
+function! ComposerLocate(names)
+    for name in a:names
+        let l:path = ComposerRoot() . '/' . name
+        if filereadable(l:path)
+            return l:path
+        endif
+    endfor
 endfunction
 
-function! ComposerBinSetup()
+function! ComposerBin(name)
+    return ComposerLocate(['vendor/bin/' . a:name, 'bin/' . a:name])
+endfunction
+
+function! ComposerSetup()
     let g:phpqa_codesniffer_cmd=ComposerBin('phpcs')
+    let g:phpqa_codesniffer_args='--standard=' . ComposerLocate(['build/phpcs.xml', 'phpcs.xml', 'vendor/rodrigorm/phpqa-make/phpcs.xml'])
     let g:phpqa_messdetector_cmd=ComposerBin('phpmd')
+    let g:phpqa_messdetector_ruleset=ComposerLocate(['build/phpmd.xml', 'phpmd.xml', 'vendor/rodrigorm/phpqa-make/phpmd.xml'])
     let g:phpunit_cmd=ComposerBin('phpunit')
     let &l:makeprg=ComposerBin('phpunit') . ' $*'
 endfunction
@@ -228,7 +235,7 @@ endfunction
 " Use from composer if exists
 augroup PHPQA
     autocmd!
-    autocmd FileType php call ComposerBinSetup()
+    autocmd FileType php call ComposerSetup()
 augroup END
 
 function! PhpTest()
