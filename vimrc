@@ -55,7 +55,7 @@ Plugin 'shawncplus/phpcomplete.vim'
 " Taggatron
 Plugin 'rodrigorm/vim-taggatron'
 
-"DBGP Debugger client
+" DBGP Debugger client
 Plugin 'joonty/vdebug'
 
 call vundle#end()
@@ -199,37 +199,31 @@ let g:phpqa_open_loc=0
 let g:feature_filetype='behat'
 let g:behat_executables=['vendor/bin/behat']
 
-function! ComposerRoot()
+function! RecursiveLocate(names, default)
     let path = expand('%:p')
     while path != fnamemodify(path, ':h')
         let path = fnamemodify(path, ':h')
-        if filereadable(path . '/composer.json')
-            return path
-        endif
+        for name in a:names
+            if filereadable(path . '/' . name)
+                return path . '/' . name
+            endif
+        endfor
     endwhile
-    return getcwd()
-endfunction
 
-function! ComposerLocate(names)
-    for name in a:names
-        let l:path = ComposerRoot() . '/' . name
-        if filereadable(l:path)
-            return l:path
-        endif
-    endfor
+    return a:default
 endfunction
 
 function! ComposerBin(name)
-    return ComposerLocate(['vendor/bin/' . a:name, 'bin/' . a:name])
+    return RecursiveLocate(['vendor/bin/' . a:name, 'bin/' . a:name], a:name)
 endfunction
 
 function! ComposerSetup()
     let g:phpqa_codesniffer_cmd=ComposerBin('phpcs')
-    let g:phpqa_codesniffer_args='--standard=' . ComposerLocate(['build/phpcs.xml', 'phpcs.xml', 'vendor/rodrigorm/phpqa-make/phpcs.xml'])
+    let g:phpqa_codesniffer_args='--standard=' . RecursiveLocate(['build/phpcs.xml', 'phpcs.xml', 'vendor/rodrigorm/phpqa-make/phpcs.xml'], 'build/phpcs.xml')
     let g:phpqa_messdetector_cmd=ComposerBin('phpmd')
-    let g:phpqa_messdetector_ruleset=ComposerLocate(['build/phpmd.xml', 'phpmd.xml', 'vendor/rodrigorm/phpqa-make/phpmd.xml'])
+    let g:phpqa_messdetector_ruleset=RecursiveLocate(['build/phpmd.xml', 'phpmd.xml', 'vendor/rodrigorm/phpqa-make/phpmd.xml'], 'build/phpmd.xml')
     let g:phpunit_cmd=ComposerBin('phpunit')
-    let &l:makeprg=ComposerBin('phpunit') . ' $*'
+    let &l:makeprg=ComposerBin('phpunit') . ' -c ' . RecursiveLocate(['tests/phpunit.xml', 'phpunit.xml', 'phpunit.xml.dist'], 'phpunit.xml.dist') . ' $*'
 endfunction
 
 " Use from composer if exists
