@@ -58,6 +58,9 @@ Plugin 'rodrigorm/vim-taggatron'
 " DBGP Debugger client
 Plugin 'joonty/vdebug'
 
+" Supertab
+Plugin 'ervandew/supertab'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -144,9 +147,7 @@ vnoremap j gj
 vnoremap k gk
 
 " Use jj to go back to normal mode,
-" disabled ESC to force learning
 inoremap jj <ESC>
-inoremap <ESC> <Nop>
 
 " Tab navigation
 nmap <Leader>te :tabnew<CR>:edit<Space>
