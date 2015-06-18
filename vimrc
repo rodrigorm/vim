@@ -61,6 +61,9 @@ Plugin 'joonty/vdebug'
 " Supertab
 Plugin 'ervandew/supertab'
 
+" Rust Language
+Plugin 'rust-lang/rust.vim'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
