@@ -122,7 +122,7 @@ let g:tagcommands = {
 \}
 
 " Ignore some files for CtrlP
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*
 " Tells Ctrl_P to find files in current working directory
 let g:ctrlp_working_path_mode = ''
 
@@ -169,6 +169,7 @@ nmap <leader>cp :cprevious<CR>
 " Hide search highlighting
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
+set grepprg=grep\ -n\ --exclude-dir=build\ $*\ /dev/null
 " The Silver Searcher
 if executable('ag')
     " Use ag over grep
