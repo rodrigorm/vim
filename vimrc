@@ -64,6 +64,10 @@ Plugin 'ervandew/supertab'
 " Rust Language
 Plugin 'rust-lang/rust.vim'
 
+" JSX Language
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -128,6 +132,9 @@ let g:ctrlp_working_path_mode = ''
 
 " Enable Ctrl-P Py Matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Enable jsx highlighting in .js files
+let g:jsx_ext_required = 0
 
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
