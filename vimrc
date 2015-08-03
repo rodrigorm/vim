@@ -68,6 +68,9 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
+" Quick Scope Navigation
+Plugin 'unblevable/quick-scope'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -197,6 +200,13 @@ inoremap <C-@> <C-x><C-o>
 " Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
+
+" Map the leader key + q to toggle quick-scope's highlighting in normal/visual
+" mode.
+" Note that you must use nmap/vmap instead of their non-recursive versions
+" (nnoremap/vnoremap).
+nmap <leader>q <plug>(QuickScopeToggle)
+vmap <leader>q <plug>(QuickScopeToggle)
 
 " Configure PHPQA using defaults from
 " http://jenkins-php.org/
