@@ -74,9 +74,15 @@ Plugin 'unblevable/quick-scope'
 " PHP + HTML Indent Support
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
 
+" Solarized
+Plugin 'altercation/vim-colors-solarized'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
+set background=dark
+colorscheme solarized
+
 set encoding=utf-8
 set showmode        " Show current input mode
 set wildmenu        " Show vim menu with commands
