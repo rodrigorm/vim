@@ -90,7 +90,7 @@ set ai              " Enable auto tab/indent
 set tabstop=4       " Hard tab using 4 spaces
 set shiftwidth=4    " 4 spaces for (auto)indent
 set ruler           " Show cursor position
-set nocursorline    " Disable highlight current line
+set cursorline    " Disable highlight current line
 set laststatus=2    " Always show status bar
 set noshowcmd       " Hide typed command at statusbar
 set hidden          " Remember undo after quitting
