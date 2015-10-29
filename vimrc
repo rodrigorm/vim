@@ -221,12 +221,12 @@ vmap <leader>q <plug>(QuickScopeToggle)
 " http://jenkins-php.org/
 let g:phpqa_messdetector_ruleset='build/phpmd.xml'
 let g:phpqa_codesniffer_args='--standard=build/phpcs.xml'
-let g:phpqa_messdetector_autorun=1
-let g:phpqa_codesniffer_autorun=1
-let g:phpqa_codecoverage_autorun=1
+let g:phpqa_messdetector_autorun=0
+let g:phpqa_codesniffer_autorun=0
+let g:phpqa_codecoverage_autorun=0
 let g:phpqa_codecoverage_file='build/logs/clover.xml'
 let g:phpqa_codecoverage_showcovered=0
-let g:phpqa_open_loc=0
+let g:phpqa_open_loc=1
 let g:feature_filetype='behat'
 let g:behat_executables=['vendor/bin/behat']
 
