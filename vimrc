@@ -30,9 +30,6 @@ Plugin 'groenewege/vim-less'
 " Coffee scripts syntax
 Plugin 'kchmck/vim-coffee-script'
 
-" Faster Ctrl-P Matcher
-Plugin 'FelikZ/ctrlp-py-matcher'
-
 " PHPQA Toolchain Integration
 Plugin 'rodrigorm/vim-phpqa'
 Plugin 'joonty/vim-phpunitqf'
@@ -90,12 +87,13 @@ set ai              " Enable auto tab/indent
 set tabstop=4       " Hard tab using 4 spaces
 set shiftwidth=4    " 4 spaces for (auto)indent
 set ruler           " Show cursor position
-set cursorline    " Disable highlight current line
+set cursorline      " Disable highlight current line
 set laststatus=2    " Always show status bar
 set noshowcmd       " Hide typed command at statusbar
 set hidden          " Remember undo after quitting
 set nobackup        " Disabled backup
 set noswapfile      " Disable swp file
+set relativenumber  " Show relative line numbers
 
 set autoread        " Automatic refresh changed files
 
@@ -110,6 +108,10 @@ set backspace=indent,eol,start " Make backspace work in insert mode
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Automatic switch linenumber when in insert mode
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 " Enable filetype detection
 filetype plugin on
@@ -139,11 +141,6 @@ let g:tagcommands = {
 
 " Ignore some files for CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*
-" Tells Ctrl_P to find files in current working directory
-let g:ctrlp_working_path_mode = ''
-
-" Enable Ctrl-P Py Matcher
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Enable jsx highlighting in .js files
 let g:jsx_ext_required = 0
@@ -287,3 +284,200 @@ function! PhpTestForFile(path)
 
     return ''
 endfunction
+
+" Status Line: {{{
+
+" Status Function: {{{2
+function! Status(winnum)
+    let active = a:winnum == winnr()
+    let bufnum = winbufnr(a:winnum)
+
+    let stat = ''
+
+    " this handles alternative statuslines
+    let usealt = 0
+    let altstat = Color(active, 4, ' »')
+
+    let type = getbufvar(bufnum, '&buftype')
+    let name = bufname(bufnum)
+
+    if type ==# 'help'
+        let altstat .= ' ' . fnamemodify(name, ':t:r')
+        let usealt = 1
+    elseif name ==# '__Gundo__'
+        let altstat .= ' Gundo'
+        let usealt = 1
+    elseif name ==# '__Gundo_Preview__'
+        let altstat .= ' Gundo Preview'
+        let usealt = 1
+    endif
+
+    if usealt
+        let altstat .= Color(active, 4, ' «')
+        return altstat
+    endif
+
+    let stat .= '%1*'
+    let stat .= '%{Column()}'
+    let stat .= '%*'
+
+    " file name
+    let stat .= Color(active, 4, active ? ' »' : ' «')
+    let stat .= ' %<'
+    let stat .= '%f'
+    let stat .= ' ' . Color(active, 4, active ? '«' : '»')
+
+    " file modified
+    let modified = getbufvar(bufnum, '&modified')
+    let stat .= Color(active, 2, modified ? ' +' : '')
+
+    " read only
+    let readonly = getbufvar(bufnum, '&readonly')
+    let stat .= Color(active, 2, readonly ? ' ‼' : '')
+
+    " paste
+    if active && &paste
+        let stat .= ' %2*' . 'P' . '%*'
+    endif
+
+    " right side
+    let stat .= '%='
+
+    " git branch
+    if exists('*fugitive#head')
+        let head = fugitive#head()
+
+        if empty(head) && exists('*fugitive#detect') && !exists('b:git_dir')
+            call fugitive#detect(getcwd())
+            let head = fugitive#head()
+        endif
+    endif
+
+    if !empty(head)
+        let stat .= Color(active, 3, ' ← ') . head . ' '
+    endif
+
+    return stat
+endfunction
+
+" this function just outputs the content colored by the
+" supplied colorgroup number, e.g. num = 2 -> User2
+" it only colors the input if the window is the currently
+" focused one
+
+function! Color(active, num, content)
+    if a:active
+        return '%' . a:num . '*' . a:content . '%*'
+    else
+        return a:content
+    endif
+endfunction
+
+" column
+"   this might seem a bit complicated but all it amounts to is
+"   a calculation to see how much padding should be used for the
+"   column number, so that it lines up nicely with the line numbers
+
+"   an expression is needed because expressions are evaluated within
+"   the context of the window for which the statusline is being prepared
+"   this is crucial because the line and virtcol functions otherwise
+"   operate on the currently focused window
+
+function! Column()
+    let vc = virtcol('.')
+    let ruler_width = max([strlen(line('$')), (&numberwidth - 1)])
+    let column_width = strlen(vc)
+    let padding = ruler_width - column_width
+    let column = ''
+
+    if padding <= 0
+        let column .= vc
+    else
+        " + 1 becuase for some reason vim eats one of the spaces
+        let column .= repeat(' ', padding + 1) . vc
+    endif
+
+    return column . ' '
+endfunction
+" }}}
+
+" Status AutoCMD: {{{
+function! s:RefreshStatus()
+    for nr in range(1, winnr('$'))
+        call setwinvar(nr, '&statusline', '%!Status(' . nr . ')')
+    endfor
+endfunction
+
+augroup status
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatus()
+augroup END
+" }}}
+
+" Status Colors: {{{
+hi User1 ctermfg=15  ctermbg=37
+hi User2 ctermfg=125 ctermbg=7
+hi User3 ctermfg=64  ctermbg=7
+hi User4 ctermfg=37  ctermbg=7
+" }}}
+
+" }}}
+
+" CtrlP: {{{2
+
+" Settings: {{{3
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_show_hidden = 1
+" this is ignored since we're using ag
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]((\.(git|hg|svn))|build)$',
+    \ 'file': '\v\.(DS_Store)$',
+    \ }
+let g:ctrlp_working_path_mode = 'ra'
+
+if executable('ag')
+    set grepprg=ag\ -nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor --ignore-dir .git -g ""'
+    let g:ctrlp_use_caching = 0
+endif
+
+map <leader>b :CtrlPBuffer<cr>
+" }}}
+
+" StatusLine: {{{3
+" Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
+"            a:1    a:2      a:3       a:4  a:5   a:6  a:7
+fu! CtrlP_main_status(...)
+    let regex = a:3 ? '%2*regex %*' : ''
+    let prv = '%#StatusLineNC# '.a:4.' %*'
+    let item = ' ' . (a:5 == 'mru files' ? 'mru' : a:5) . ' '
+    let nxt = '%#StatusLineNC# '.a:6.' %*'
+    let byfname = '%2* '.a:2.' %*'
+    let dir = '%3* ← %*%#StatusLineNC#' . fnamemodify(getcwd(), ':~') . '%* '
+
+    " only outputs current mode
+    retu ' %4*»%*' . item . '%4*«%* ' . '%=%<' . dir
+
+    " outputs previous/next modes as well
+    " retu prv . '%4*»%*' . item . '%4*«%*' . nxt . '%=%<' . dir
+endf
+
+" Argument: len
+"           a:1
+fu! CtrlP_progress_status(...)
+    let len = '%#Function# '.a:1.' %*'
+    let dir = ' %=%<%#LineNr# '.getcwd().' %*'
+    retu len.dir
+endf
+
+hi CtrlP_Purple  ctermfg=255 ctermbg=54
+hi CtrlP_IPurple ctermfg=54  ctermbg=255
+hi CtrlP_Violet  ctermfg=54  ctermbg=104
+
+let g:ctrlp_status_func = {
+    \ 'main': 'CtrlP_main_status',
+    \ 'prog': 'CtrlP_progress_status'
+    \}
+" }}}
+
+" }}}
