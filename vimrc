@@ -71,14 +71,10 @@ Plugin 'unblevable/quick-scope'
 " PHP + HTML Indent Support
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
 
-" Solarized
-Plugin 'altercation/vim-colors-solarized'
-
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
-set background=dark
-colorscheme solarized
+colorscheme default
 
 set encoding=utf-8
 set showmode        " Show current input mode
@@ -296,7 +292,7 @@ function! Status(winnum)
 
     " this handles alternative statuslines
     let usealt = 0
-    let altstat = Color(active, 4, ' »')
+    let altstat = ' »'
 
     let type = getbufvar(bufnum, '&buftype')
     let name = bufname(bufnum)
@@ -313,7 +309,7 @@ function! Status(winnum)
     endif
 
     if usealt
-        let altstat .= Color(active, 4, ' «')
+        let altstat .= ' «'
         return altstat
     endif
 
@@ -322,18 +318,18 @@ function! Status(winnum)
     let stat .= '%*'
 
     " file name
-    let stat .= Color(active, 4, active ? ' »' : ' «')
+    let stat .= active ? ' »' : ' «'
     let stat .= ' %<'
     let stat .= '%f'
-    let stat .= ' ' . Color(active, 4, active ? '«' : '»')
+    let stat .= ' ' . active ? '«' : '»'
 
     " file modified
     let modified = getbufvar(bufnum, '&modified')
-    let stat .= Color(active, 2, modified ? ' +' : '')
+    let stat .= modified ? ' +' : ''
 
     " read only
     let readonly = getbufvar(bufnum, '&readonly')
-    let stat .= Color(active, 2, readonly ? ' ‼' : '')
+    let stat .= readonly ? ' ‼' : ''
 
     " paste
     if active && &paste
@@ -354,23 +350,10 @@ function! Status(winnum)
     endif
 
     if !empty(head)
-        let stat .= Color(active, 3, ' ← ') . head . ' '
+        let stat .= ' ← ' . head . ' '
     endif
 
     return stat
-endfunction
-
-" this function just outputs the content colored by the
-" supplied colorgroup number, e.g. num = 2 -> User2
-" it only colors the input if the window is the currently
-" focused one
-
-function! Color(active, num, content)
-    if a:active
-        return '%' . a:num . '*' . a:content . '%*'
-    else
-        return a:content
-    endif
 endfunction
 
 " column
@@ -412,13 +395,6 @@ augroup status
     autocmd!
     autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatus()
 augroup END
-" }}}
-
-" Status Colors: {{{
-hi User1 ctermfg=15  ctermbg=37
-hi User2 ctermfg=125 ctermbg=7
-hi User3 ctermfg=64  ctermbg=7
-hi User4 ctermfg=37  ctermbg=7
 " }}}
 
 " }}}
