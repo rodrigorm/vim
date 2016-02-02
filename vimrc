@@ -71,6 +71,9 @@ Plugin 'unblevable/quick-scope'
 " PHP + HTML Indent Support
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
 
+" Emblem
+Plugin 'heartsentwined/vim-emblem'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
