@@ -175,6 +175,9 @@ vnoremap k gk
 " Use jj to go back to normal mode,
 inoremap jj <ESC>
 
+" Quick save
+nnoremap <silent> <Leader>w :update<CR>
+
 " Tab navigation
 nmap <Leader>te :tabnew<CR>:edit<Space>
 nmap <Leader>to :tabnew<CR>
