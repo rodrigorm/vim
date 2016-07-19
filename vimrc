@@ -74,6 +74,9 @@ Plugin 'captbaritone/better-indent-support-for-php-with-html'
 " Emblem
 Plugin 'heartsentwined/vim-emblem'
 
+" JSON
+Plugin 'elzr/vim-json'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
