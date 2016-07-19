@@ -30,8 +30,11 @@ Plugin 'groenewege/vim-less'
 " Coffee scripts syntax
 Plugin 'kchmck/vim-coffee-script'
 
+" PHP Syntax
+Plugin 'StanAngeloff/php.vim'
+
 " PHPQA Toolchain Integration
-Plugin 'rodrigorm/vim-phpqa'
+Plugin 'joonty/vim-phpqa'
 Plugin 'joonty/vim-phpunitqf'
 Plugin 'afternoon/vim-phpunit'
 Plugin 'veloce/vim-behat'
@@ -40,17 +43,14 @@ Plugin 'veloce/vim-behat'
 Plugin 'junegunn/vader.vim'
 
 " Projectionist
-Plugin 'rodrigorm/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-projectionist'
-
-" CakePHP
-Plugin 'violetyk/cake.vim'
 
 " PHPComplete
 Plugin 'shawncplus/phpcomplete.vim'
 
 " Taggatron
-Plugin 'rodrigorm/vim-taggatron'
+Plugin 'joonty/vim-taggatron'
 
 " DBGP Debugger client
 Plugin 'joonty/vdebug'
@@ -70,6 +70,7 @@ Plugin 'unblevable/quick-scope'
 
 " PHP + HTML Indent Support
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plugin '2072/PHP-Indenting-for-VIm'
 
 " Emblem
 Plugin 'heartsentwined/vim-emblem'
@@ -136,8 +137,9 @@ augroup END
 
 let g:tagcommands = {
 \   "php": {
+\       "cmd": "phpctags",
 \       "tagfile": ".git/php.tags",
-\       "args": "--recurse --exclude=@.ctagsignore"
+\       "args": "--recurse"
 \   }
 \}
 
