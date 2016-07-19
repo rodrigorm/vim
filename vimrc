@@ -78,6 +78,9 @@ Plugin 'heartsentwined/vim-emblem'
 " JSON
 Plugin 'elzr/vim-json'
 
+" Pairs of handy bracket mappings
+Plugin 'tpope/vim-unimpaired'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -178,13 +181,9 @@ nmap <Leader>to :tabnew<CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
 
-" Location list navigation
-nmap <leader>on :lnext<CR>
-nmap <leader>op :lprevious<CR>
-
-" Quick list navigation
-nmap <leader>cn :cnext<CR>
-nmap <leader>cp :cprevious<CR>
+" Tag navigation
+nmap ]g <C-]>
+nmap [g <C-T>
 
 " Hide search highlighting
 nnoremap <silent> <leader>/ :nohlsearch<CR>
