@@ -81,6 +81,11 @@ Plugin 'elzr/vim-json'
 " Pairs of handy bracket mappings
 Plugin 'tpope/vim-unimpaired'
 
+" TypeScript support
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'Shougo/vimproc.vim'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
