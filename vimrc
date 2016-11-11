@@ -66,7 +66,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
 " Quick Scope Navigation
-Plugin 'unblevable/quick-scope'
+" Plugin 'unblevable/quick-scope'
 
 " PHP + HTML Indent Support
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
