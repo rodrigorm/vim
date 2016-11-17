@@ -157,6 +157,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*
 " Enable jsx highlighting in .js files
 let g:jsx_ext_required = 0
 
+" json settings
+let g:vim_json_syntax_conceal = 0
+
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
 nnoremap ; :
