@@ -86,6 +86,9 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
 
+" Syntastic
+Plugin 'vim-syntastic/syntastic'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -159,6 +162,16 @@ let g:jsx_ext_required = 0
 
 " json settings
 let g:vim_json_syntax_conceal = 0
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
