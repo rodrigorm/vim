@@ -92,6 +92,9 @@ Plugin 'vim-syntastic/syntastic'
 " Committia
 Plugin 'rhysd/committia.vim'
 
+" Enhanced netrw
+Plugin 'tpope/vim-vinegar'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
