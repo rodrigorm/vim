@@ -89,6 +89,9 @@ Plugin 'Shougo/vimproc.vim'
 " Syntastic
 Plugin 'vim-syntastic/syntastic'
 
+" Committia
+Plugin 'rhysd/committia.vim'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
