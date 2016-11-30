@@ -95,6 +95,9 @@ Plugin 'rhysd/committia.vim'
 " Enhanced netrw
 Plugin 'tpope/vim-vinegar'
 
+" JSON5 support
+Plugin 'GutenYe/json5.vim'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
