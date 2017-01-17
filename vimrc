@@ -98,11 +98,16 @@ Plugin 'tpope/vim-vinegar'
 " JSON5 support
 Plugin 'GutenYe/json5.vim'
 
+" TOML support
+Plugin 'cespare/vim-toml'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
 colorscheme default
-set background=dark
+if has("gui_macvim")
+    set background=dark
+endif
 
 set encoding=utf-8
 set showmode        " Show current input mode
