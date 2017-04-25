@@ -4,10 +4,13 @@ set nocompatible
 filetype off
 
 " Enable vundle bundle manager
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Install bundles here
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " Show class and methods in file
 Plugin 'vim-scripts/taglist.vim'
@@ -101,6 +104,9 @@ Plugin 'GutenYe/json5.vim'
 " TOML support
 Plugin 'cespare/vim-toml'
 
+" GO Lang Support
+Plugin 'fatih/vim-go'
+
 call vundle#end()
 
 syntax enable       " Enable syntax highlight
@@ -135,6 +141,10 @@ let mapleader=','   " Set <leader> to ,
 set scrolloff=5     " When scrolling off-screen do so 5 lines at a time, not 1
 set backspace=indent,eol,start " Make backspace work in insert mode
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
+
+" show invisible
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
