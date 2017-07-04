@@ -122,7 +122,8 @@ set ai              " Enable auto tab/indent
 set tabstop=4       " Hard tab using 4 spaces
 set shiftwidth=4    " 4 spaces for (auto)indent
 set ruler           " Show cursor position
-set cursorline      " Disable highlight current line
+set cursorline      " Enable highlight current line
+set colorcolumn=120 " Color column 120
 set laststatus=2    " Always show status bar
 set noshowcmd       " Hide typed command at statusbar
 set hidden          " Remember undo after quitting
@@ -166,6 +167,9 @@ let Tlist_Sort_Type='name'          " Sort tags by name
 let Tlist_Close_On_Select=1         " Close taglist when select
 " Does not show variables for PHP buffers
 let tlist_php_settings='php;c:Classes;f:Functions'
+" Go language
+let tlist_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
+                            \ 'v:variable;f:function'
 
 augroup TagFileType
     autocmd!
@@ -177,6 +181,12 @@ let g:tagcommands = {
 \       "cmd": "phpctags",
 \       "tagfile": ".git/php.tags",
 \       "args": "--recurse"
+\   },
+\   "go": {
+\       "cmd": "ctags",
+\       "tagfile": ".git/go.tags",
+\       "args": "-R",
+\       "filesappend": "**/*.go"
 \   }
 \}
 
@@ -198,6 +208,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:go_autodetect_gopath = 1
 
 " Keyboard bindings
 " Use ; instead of : at command mode, ;q or ;w instead of :q or :w
