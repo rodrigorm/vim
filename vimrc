@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " Enable vundle bundle manager
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 
 " Install bundles here
