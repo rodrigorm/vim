@@ -526,3 +526,5 @@ let g:ctrlp_status_func = {
 " }}}
 
 " }}}
+
+au BufNewFile,BufRead *.ejs set filetype=html
