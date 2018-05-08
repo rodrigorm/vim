@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " Enable vundle bundle manager
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Install bundles here
@@ -38,7 +38,7 @@ Plugin 'StanAngeloff/php.vim'
 
 " PHPQA Toolchain Integration
 Plugin 'joonty/vim-phpqa'
-Plugin 'joonty/vim-phpunitqf'
+" Plugin 'joonty/vim-phpunitqf'
 Plugin 'afternoon/vim-phpunit'
 Plugin 'veloce/vim-behat'
 
