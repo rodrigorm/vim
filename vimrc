@@ -109,6 +109,10 @@ Plugin 'fatih/vim-go'
 
 call vundle#end()
 
+" Enable filetype detection
+filetype plugin on
+filetype plugin indent on
+
 syntax enable       " Enable syntax highlight
 colorscheme default
 if has("gui_macvim")
@@ -153,10 +157,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Automatic switch linenumber when in insert mode
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
-
-" Enable filetype detection
-filetype plugin on
-filetype plugin indent on
 
 " Taglist Settings
 nnoremap <leader>l :TlistToggle<CR>
@@ -409,6 +409,8 @@ function! Status(winnum)
     let stat .= '%='
 
     " git branch
+    let head = ''
+
     if exists('*fugitive#head')
         let head = fugitive#head()
 
