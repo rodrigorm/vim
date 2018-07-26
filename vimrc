@@ -178,9 +178,10 @@ augroup END
 
 let g:tagcommands = {
 \   "php": {
-\       "cmd": "phpctags",
+\       "cmd": "ctags",
 \       "tagfile": ".git/php.tags",
-\       "args": "--recurse"
+\       "args": "-R",
+\       "filesappend": "**/*.php"
 \   },
 \   "go": {
 \       "cmd": "ctags",
