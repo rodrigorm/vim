@@ -107,6 +107,9 @@ Plugin 'cespare/vim-toml'
 " GO Lang Support
 Plugin 'fatih/vim-go'
 
+" Code Time from Software.com
+Plugin 'swdotcom/swdc-vim'
+
 call vundle#end()
 
 " Enable filetype detection
