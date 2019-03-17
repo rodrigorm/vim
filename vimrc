@@ -1,4 +1,5 @@
 set nocompatible
+language en_US.UTF-8
 
 " Disable for vundle install
 filetype off
