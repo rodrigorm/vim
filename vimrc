@@ -68,6 +68,7 @@ Plugin 'rust-lang/rust.vim'
 " JSX Language
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'jparise/vim-graphql'
 
 " Quick Scope Navigation
 " Plugin 'unblevable/quick-scope'
@@ -109,7 +110,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'fatih/vim-go'
 
 " Code Time from Software.com
-Plugin 'swdotcom/swdc-vim'
+" Plugin 'swdotcom/swdc-vim'
 
 call vundle#end()
 
@@ -213,6 +214,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:go_autodetect_gopath = 1
 
