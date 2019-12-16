@@ -27,15 +27,6 @@ Plugin 'editorconfig/editorconfig-vim'
 " Install trailing spaces higlight
 Plugin 'bronson/vim-trailing-whitespace'
 
-" Less syntax
-Plugin 'groenewege/vim-less'
-
-" Coffee scripts syntax
-Plugin 'kchmck/vim-coffee-script'
-
-" PHP Syntax
-Plugin 'StanAngeloff/php.vim'
-
 " PHPQA Toolchain Integration
 Plugin 'joonty/vim-phpqa'
 " Plugin 'joonty/vim-phpunitqf'
@@ -58,34 +49,14 @@ Plugin 'joonty/vdebug'
 " Supertab
 Plugin 'ervandew/supertab'
 
-" Rust Language
-Plugin 'rust-lang/rust.vim'
-
-" JSX Language
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'jparise/vim-graphql'
-
 " Quick Scope Navigation
 " Plugin 'unblevable/quick-scope'
-
-" PHP + HTML Indent Support
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
-Plugin '2072/PHP-Indenting-for-VIm'
-
-" Emblem
-Plugin 'heartsentwined/vim-emblem'
-
-" JSON
-Plugin 'elzr/vim-json'
 
 " Pairs of handy bracket mappings
 Plugin 'tpope/vim-unimpaired'
 
-" TypeScript support
-Plugin 'leafgarland/typescript-vim'
+" Make your Vim a TypeScript IDE
 Plugin 'Quramy/tsuquyomi'
-Plugin 'Shougo/vimproc.vim'
 
 " Syntastic
 Plugin 'vim-syntastic/syntastic'
@@ -96,14 +67,15 @@ Plugin 'rhysd/committia.vim'
 " Enhanced netrw
 Plugin 'tpope/vim-vinegar'
 
-" JSON5 support
-Plugin 'GutenYe/json5.vim'
-
-" TOML support
-Plugin 'cespare/vim-toml'
-
-" GO Lang Support
-Plugin 'fatih/vim-go'
+" Additional language syntax support
+Plugin 'kchmck/vim-coffee-script' " Coffee scripts syntax
+Plugin 'pangloss/vim-javascript' " improves javascfript
+Plugin 'MaxMEllon/vim-jsx-pretty' " JSX syntax
+Plugin 'jparise/vim-graphql' " GraphQL files and tags syntax
+Plugin 'heartsentwined/vim-emblem' " Emblem
+Plugin 'captbaritone/better-indent-support-for-php-with-html' " PHP + HTML Indent Support
+Plugin '2072/PHP-Indenting-for-VIm' " PHP + HTML Indent Support
+Plugin 'cespare/vim-toml' " TOML support
 
 call vundle#end()
 
