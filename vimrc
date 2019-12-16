@@ -27,12 +27,6 @@ Plugin 'editorconfig/editorconfig-vim'
 " Install trailing spaces higlight
 Plugin 'bronson/vim-trailing-whitespace'
 
-" PHPQA Toolchain Integration
-Plugin 'joonty/vim-phpqa'
-" Plugin 'joonty/vim-phpunitqf'
-Plugin 'afternoon/vim-phpunit'
-Plugin 'veloce/vim-behat'
-
 " Vimscript test framework
 Plugin 'junegunn/vader.vim'
 
@@ -40,17 +34,11 @@ Plugin 'junegunn/vader.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-projectionist'
 
-" PHPComplete
-Plugin 'shawncplus/phpcomplete.vim'
-
 " DBGP Debugger client
 Plugin 'joonty/vdebug'
 
 " Supertab
 Plugin 'ervandew/supertab'
-
-" Quick Scope Navigation
-" Plugin 'unblevable/quick-scope'
 
 " Pairs of handy bracket mappings
 Plugin 'tpope/vim-unimpaired'
