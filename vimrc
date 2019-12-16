@@ -1,5 +1,4 @@
 set nocompatible
-language en_US.UTF-8
 
 " Disable for vundle install
 filetype off
@@ -13,11 +12,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" sensible.vim: Defaults everyone can agree on
+Plugin 'tpope/vim-sensible'
+
 " Show class and methods in file
 Plugin 'vim-scripts/taglist.vim'
-
-" Enable file navigate like Sublime (Ctrl+P) and Textmate (Cmd+T)
-Plugin 'kien/ctrlp.vim'
 
 " The best Git wrapper of all time
 Plugin 'tpope/vim-fugitive'
@@ -111,54 +110,29 @@ Plugin 'fatih/vim-go'
 
 call vundle#end()
 
-" Enable filetype detection
-filetype plugin on
-filetype plugin indent on
-
-syntax enable       " Enable syntax highlight
 colorscheme default
 if has("gui_macvim")
     set background=dark
 endif
 
-set encoding=utf-8
 set showmode        " Show current input mode
-set wildmenu        " Show vim menu with commands
-set ai              " Enable auto tab/indent
 set tabstop=4       " Hard tab using 4 spaces
 set shiftwidth=4    " 4 spaces for (auto)indent
-set ruler           " Show cursor position
-set cursorline      " Enable highlight current line
-set colorcolumn=120 " Color column 120
-set laststatus=2    " Always show status bar
 set noshowcmd       " Hide typed command at statusbar
-set hidden          " Remember undo after quitting
 set nobackup        " Disabled backup
 set noswapfile      " Disable swp file
+set number          " Show line number
 set relativenumber  " Show relative line numbers
 
-set autoread        " Automatic refresh changed files
-
-set incsearch       " Enable incremental search
 set hlsearch        " Enable search highlight
 set ignorecase      " Case insensitive search
 set smartcase       " If search contains uppercase enables case sensitive search
 
-let mapleader=','   " Set <leader> to ,
 set scrolloff=5     " When scrolling off-screen do so 5 lines at a time, not 1
-set backspace=indent,eol,start " Make backspace work in insert mode
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
-
-" show invisible
-set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Automatic switch linenumber when in insert mode
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
 
 " Taglist Settings
 nnoremap <leader>l :TlistToggle<CR>
@@ -193,7 +167,7 @@ let g:tagcommands = {
 \   }
 \}
 
-" Ignore some files for CtrlP
+" Ignore some files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*
 
 " Enable jsx highlighting in .js files
@@ -214,10 +188,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
 let g:go_autodetect_gopath = 1
-
-" Keyboard bindings
-" Use ; instead of : at command mode, ;q or ;w instead of :q or :w
-nnoremap ; :
 
 " Disabled arrow key navigation
 noremap <Up>    <Nop>
@@ -251,108 +221,15 @@ nmap <S-Tab> gT
 nmap ]g <C-]>
 nmap [g <C-T>
 
-" Hide search highlighting
-nnoremap <silent> <leader>/ :nohlsearch<CR>
-
-set grepprg=grep\ -n\ --exclude-dir=build\ $*\ /dev/null
-" The Silver Searcher
-if executable('ag')
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-" bind K to grep word under cursor
-nnoremap K :grep! '\b<C-R><C-W>\b'<CR>:cw<CR>
+set grepprg=grep\ -n\ --exclude-dir=build\ --exclude-dir=.git\ --exclude-dir=mode_modules\ --exclude-dir=vendor\ $*\ /dev/null
 
 " File explorer
 map <silent> <leader>t :Explore<CR>
 map <silent> <leader>T :split +Explore<CR>
 
-" Omni Complete using Ctrl-Space
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-x><C-o>
-
 " Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
-
-" Map the leader key + q to toggle quick-scope's highlighting in normal/visual
-" mode.
-" Note that you must use nmap/vmap instead of their non-recursive versions
-" (nnoremap/vnoremap).
-nmap <leader>q <plug>(QuickScopeToggle)
-vmap <leader>q <plug>(QuickScopeToggle)
-
-" Configure PHPQA using defaults from
-" http://jenkins-php.org/
-let g:phpqa_messdetector_ruleset='build/phpmd.xml'
-let g:phpqa_codesniffer_args='--standard=build/phpcs.xml'
-let g:phpqa_messdetector_autorun=0
-let g:phpqa_codesniffer_autorun=0
-let g:phpqa_codecoverage_autorun=0
-let g:phpqa_codecoverage_file='build/logs/clover.xml'
-let g:phpqa_codecoverage_showcovered=0
-let g:phpqa_open_loc=1
-let g:feature_filetype='behat'
-let g:behat_executables=['vendor/bin/behat']
-
-function! RecursiveLocate(names, default)
-    let path = expand('%:p')
-    while path != fnamemodify(path, ':h')
-        let path = fnamemodify(path, ':h')
-        for name in a:names
-            if filereadable(path . '/' . name)
-                return path . '/' . name
-            endif
-        endfor
-    endwhile
-
-    return a:default
-endfunction
-
-function! ComposerBin(name)
-    return RecursiveLocate(['vendor/bin/' . a:name, 'bin/' . a:name], a:name)
-endfunction
-
-function! ComposerSetup()
-    let g:phpqa_codesniffer_cmd=ComposerBin('phpcs')
-    let g:phpqa_codesniffer_args='--standard=' . RecursiveLocate(['build/phpcs.xml', 'phpcs.xml', 'vendor/rodrigorm/phpqa-make/phpcs.xml'], 'build/phpcs.xml')
-    let g:phpqa_messdetector_cmd=ComposerBin('phpmd')
-    let g:phpqa_messdetector_ruleset=RecursiveLocate(['build/phpmd.xml', 'phpmd.xml', 'vendor/rodrigorm/phpqa-make/phpmd.xml'], 'build/phpmd.xml')
-    let g:phpunit_cmd=ComposerBin('phpunit')
-    let &l:makeprg=ComposerBin('phpunit') . ' -c ' . RecursiveLocate(['tests/phpunit.xml', 'phpunit.xml', 'phpunit.xml.dist'], 'phpunit.xml.dist') . ' $*'
-endfunction
-
-" Use from composer if exists
-augroup PHPQA
-    autocmd!
-    autocmd FileType php call ComposerSetup()
-augroup END
-
-function! PhpTest()
-    let l:test = PhpTestForFile(expand('%'))
-
-    if filereadable(l:test)
-        :execute ':Test ' . l:test
-    endif
-endfunction
-
-function! PhpTestForFile(path)
-    " Trim white space
-    let l:file = substitute(a:path, '^\s*\(.\{-}\)\s*$', '\1', '')
-    let l:test = ''
-
-    " If no arguments are passed to :Test
-    if l:file =~ '^src/.*'
-        return substitute(l:file,'^src/\(.\{-}\)\.php$', 'tests/\1Test.php', '')
-    endif
-
-    if l:file =~ '^tests/.*Test\.php'
-        return l:file
-    endif
-
-    return ''
-endfunction
 
 " Status Line: {{{
 
@@ -470,65 +347,6 @@ augroup status
     autocmd!
     autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatus()
 augroup END
-" }}}
-
-" }}}
-
-" CtrlP: {{{2
-
-" Settings: {{{3
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_show_hidden = 1
-" this is ignored since we're using ag
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/]((\.(git|hg|svn))|build)$',
-    \ 'file': '\v\.(DS_Store)$',
-    \ }
-let g:ctrlp_working_path_mode = 'ra'
-
-if executable('ag')
-    set grepprg=ag\ -nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor --ignore-dir .git -g ""'
-    let g:ctrlp_use_caching = 0
-endif
-
-map <leader>b :CtrlPBuffer<cr>
-" }}}
-
-" StatusLine: {{{3
-" Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
-"            a:1    a:2      a:3       a:4  a:5   a:6  a:7
-fu! CtrlP_main_status(...)
-    let regex = a:3 ? '%2*regex %*' : ''
-    let prv = '%#StatusLineNC# '.a:4.' %*'
-    let item = ' ' . (a:5 == 'mru files' ? 'mru' : a:5) . ' '
-    let nxt = '%#StatusLineNC# '.a:6.' %*'
-    let byfname = '%2* '.a:2.' %*'
-    let dir = '%3* ← %*%#StatusLineNC#' . fnamemodify(getcwd(), ':~') . '%* '
-
-    " only outputs current mode
-    retu ' %4*»%*' . item . '%4*«%* ' . '%=%<' . dir
-
-    " outputs previous/next modes as well
-    " retu prv . '%4*»%*' . item . '%4*«%*' . nxt . '%=%<' . dir
-endf
-
-" Argument: len
-"           a:1
-fu! CtrlP_progress_status(...)
-    let len = '%#Function# '.a:1.' %*'
-    let dir = ' %=%<%#LineNr# '.getcwd().' %*'
-    retu len.dir
-endf
-
-hi CtrlP_Purple  ctermfg=255 ctermbg=54
-hi CtrlP_IPurple ctermfg=54  ctermbg=255
-hi CtrlP_Violet  ctermfg=54  ctermbg=104
-
-let g:ctrlp_status_func = {
-    \ 'main': 'CtrlP_main_status',
-    \ 'prog': 'CtrlP_progress_status'
-    \}
 " }}}
 
 " }}}
