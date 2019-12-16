@@ -52,9 +52,6 @@ Plugin 'tpope/vim-projectionist'
 " PHPComplete
 Plugin 'shawncplus/phpcomplete.vim'
 
-" Taggatron
-Plugin 'joonty/vim-taggatron'
-
 " DBGP Debugger client
 Plugin 'joonty/vdebug'
 
@@ -146,26 +143,6 @@ let tlist_php_settings='php;c:Classes;f:Functions'
 " Go language
 let tlist_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
                             \ 'v:variable;f:function'
-
-augroup TagFileType
-    autocmd!
-    autocmd FileType * execute 'setlocal tags+=~/.ctags/' . &filetype . '/*/tags'
-augroup END
-
-let g:tagcommands = {
-\   "php": {
-\       "cmd": "ctags",
-\       "tagfile": ".git/php.tags",
-\       "args": "-R",
-\       "filesappend": "**/*.php"
-\   },
-\   "go": {
-\       "cmd": "ctags",
-\       "tagfile": ".git/go.tags",
-\       "args": "-R",
-\       "filesappend": "**/*.go"
-\   }
-\}
 
 " Ignore some files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*
