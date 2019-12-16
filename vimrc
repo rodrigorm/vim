@@ -128,9 +128,6 @@ set smartcase       " If search contains uppercase enables case sensitive search
 set scrolloff=5     " When scrolling off-screen do so 5 lines at a time, not 1
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
-" Automatically removing all trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
-
 " Taglist Settings
 nnoremap <leader>l :TlistToggle<CR>
 let Tlist_Use_Right_Window=1        " Show taglist at right
