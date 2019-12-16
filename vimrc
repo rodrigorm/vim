@@ -35,7 +35,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-projectionist'
 
 " DBGP Debugger client
-Plugin 'joonty/vdebug'
+Plugin 'vim-vdebug/vdebug'
 
 " Supertab
 Plugin 'ervandew/supertab'
