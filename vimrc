@@ -71,6 +71,8 @@ colorscheme default
 if has("gui_macvim")
     set background=dark
 endif
+highlight Search       term=reverse ctermfg=0
+highlight QuickFixLine term=reverse ctermfg=0
 
 set showmode        " Show current input mode
 set tabstop=4       " Hard tab using 4 spaces
@@ -155,7 +157,7 @@ nmap <S-Tab> gT
 nmap ]g <C-]>
 nmap [g <C-T>
 
-set grepprg=grep\ -n\ --exclude-dir=build\ --exclude-dir=.git\ --exclude-dir=mode_modules\ --exclude-dir=vendor\ $*\ /dev/null
+set grepprg=grep\ -n\ --exclude-dir=build\ --exclude-dir=.git\ --exclude-dir=node_modules\ --exclude-dir=vendor\ $*\ /dev/null
 
 " File explorer
 map <silent> <leader>t :Explore<CR>
