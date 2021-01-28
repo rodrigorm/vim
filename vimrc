@@ -35,7 +35,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-projectionist'
 
 " DBGP Debugger client
-Plugin 'vim-vdebug/vdebug'
+" Plugin 'vim-vdebug/vdebug'
 
 " Supertab
 Plugin 'ervandew/supertab'
@@ -65,9 +65,12 @@ Plugin 'captbaritone/better-indent-support-for-php-with-html' " PHP + HTML Inden
 Plugin '2072/PHP-Indenting-for-VIm' " PHP + HTML Indent Support
 Plugin 'cespare/vim-toml' " TOML support
 
+" Dracula Them
+Plugin 'dracula/vim', { 'name': 'dracula' }
+
 call vundle#end()
 
-colorscheme default
+colorscheme dracula
 if has("gui_macvim")
     set background=dark
 endif
@@ -119,7 +122,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint', 'flow', 'standard']
 
@@ -157,7 +160,7 @@ nmap <S-Tab> gT
 nmap ]g <C-]>
 nmap [g <C-T>
 
-set grepprg=grep\ -n\ --exclude-dir=build\ --exclude-dir=.git\ --exclude-dir=node_modules\ --exclude-dir=vendor\ $*\ /dev/null
+set grepprg=grep\ -n\ --exclude-dir=build\ --exclude-dir=.git\ --exclude-dir=node_modules\ --exclude-dir=vendor\ --exclude-dir=.expo\ --exclude-dir=.next\ --exclude-dir=coverage\ $*\ /dev/null
 
 " File explorer
 map <silent> <leader>t :Explore<CR>
@@ -231,8 +234,7 @@ function! Status(winnum)
     if exists('*fugitive#head')
         let head = fugitive#head()
 
-        if empty(head) && exists('*fugitive#detect') && !exists('b:git_dir')
-            call fugitive#detect(getcwd())
+        if empty(head) && !exists('b:git_dir')
             let head = fugitive#head()
         endif
     endif
