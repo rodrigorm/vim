@@ -48,6 +48,7 @@ Plugin 'Quramy/tsuquyomi'
 
 " Syntastic
 Plugin 'vim-syntastic/syntastic'
+Plugin 'leafgarland/typescript-vim'
 
 " Committia
 Plugin 'rhysd/committia.vim'
